@@ -11,6 +11,7 @@ COPY scripts /scripts
 #   We run siege -C first to make it display its message -- the next uses of siege
 #   will only return the json
 # - Erase Pacman cache
+RUN sudo pacman -S archlinux-keyring
 RUN sudo pacman -Syu --noconfirm git 
 # clang gcc gtest libev sdl2 sdl2_image
 # RUN sudo pacman -Syu --noconfirm git clang autoconf-archive cmake libev boost python-pre-commit \
