@@ -1,4 +1,4 @@
-FROM archlinux:base-devel-20210822.0.32033
+FROM archlinux:latest
 
 # Copy installation scripts
 COPY scripts /scripts
@@ -11,12 +11,10 @@ COPY scripts /scripts
 #   We run siege -C first to make it display its message -- the next uses of siege
 #   will only return the json
 # - Erase Pacman cache
-RUN sudo pacman -S archlinux-keyring
-RUN sudo pacman -Syu --noconfirm git 
 # clang gcc gtest libev sdl2 sdl2_image
-# RUN sudo pacman -Syu --noconfirm git clang autoconf-archive cmake libev boost python-pre-commit \
-#                                  python-pytest python-pytest-xdist python-pytest-timeout \
-#                                  python-requests patch figlet siege gtest gmock mkcert caddy
+RUN sudo pacman -Syu --noconfirm git clang autoconf-archive cmake libev boost python-pre-commit \
+                                 python-pytest python-pytest-xdist python-pytest-timeout \
+                                 python-requests patch figlet siege gtest gmock mkcert caddy
 RUN /scripts/setup-nobody.sh
 RUN /scripts/install-aur.sh libcsptr
 RUN /scripts/install-aur.sh criterion
