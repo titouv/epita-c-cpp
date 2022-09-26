@@ -1,5 +1,7 @@
 # C/C++ CI Image for EPITA
 
+Test update
+
 [![Docker Pulls](https://img.shields.io/docker/pulls/utybo/epita-c-cpp?logo=docker&logoColor=white&style=for-the-badge)](https://hub.docker.com/r/utybo/epita-c-cpp) [![Docker Tag](https://img.shields.io/docker/v/utybo/epita-c-cpp?label=tag&logo=docker&logoColor=white&style=for-the-badge)](https://hub.docker.com/r/utybo/epita-c-cpp)
 
 C/C++ Docker image for using CI at EPITA.
@@ -106,9 +108,9 @@ jobs:
 
 <summary>Click to expand...</summary>
 
-**This is no longer necessary, use the regular GitHub Actions file instead.** Previous issues required patching both the glibc inside the container *and* `runc` outside of it. These are no longer necessary (the script for patching the glibc has since then been removed), but the following is still left in case anyone needs it.
+**This is no longer necessary, use the regular GitHub Actions file instead.** Previous issues required patching both the glibc inside the container _and_ `runc` outside of it. These are no longer necessary (the script for patching the glibc has since then been removed), but the following is still left in case anyone needs it.
 
-Here is a starting point for a workflow in GitHub Actions. Note that, due to [what is explained in this issue](https://github.com/actions/virtual-environments/issues/2658), we needed to manually patch the glibc in the container *and* update `runc` on the host while we waited for a new Docker release.
+Here is a starting point for a workflow in GitHub Actions. Note that, due to [what is explained in this issue](https://github.com/actions/virtual-environments/issues/2658), we needed to manually patch the glibc in the container _and_ update `runc` on the host while we waited for a new Docker release.
 
 TL;DR, create a script in a `scripts/` folder in your repo (name it something like `ci.sh` or something) that does everything you want (compiling, etc.)
 
@@ -152,7 +154,7 @@ jobs:
               bash -c "scripts/YOUR_SCRIPT_NAME_HERE.sh"
 ```
 
-This has the severe drawback of only having one step displayed on GitHub Actions for the entire compilation process. We unfortunately cannot do much about this, as we need to run stuff outside of the container (updating runc), then *in* the container (running our CI stuff). This is still a pretty nice workaround.
+This has the severe drawback of only having one step displayed on GitHub Actions for the entire compilation process. We unfortunately cannot do much about this, as we need to run stuff outside of the container (updating runc), then _in_ the container (running our CI stuff). This is still a pretty nice workaround.
 
 Here's an example of what the script could look like:
 
