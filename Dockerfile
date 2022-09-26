@@ -13,9 +13,9 @@ COPY scripts /scripts
 # - Erase Pacman cache
 RUN sudo pacman -Syu --noconfirm git clang autoconf-archive cmake libev boost python-pre-commit \
                                  python-pytest python-pytest-xdist python-pytest-timeout \
-                                 python-requests patch figlet siege gtest gmock mkcert caddy && \
-    /scripts/setup-nobody.sh && \
-    /scripts/install-aur.sh libcsptr && \
-    /scripts/install-aur.sh criterion && \
-    siege -C && \
-    sudo pacman -Scc --noconfirm
+                                 python-requests patch figlet siege gtest gmock mkcert caddy
+RUN /scripts/setup-nobody.sh
+RUN /scripts/install-aur.sh libcsptr
+RUN /scripts/install-aur.sh criterion
+RUN siege -C
+RUN sudo pacman -Scc --noconfirm
