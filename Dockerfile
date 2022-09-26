@@ -11,7 +11,7 @@ COPY scripts /scripts
 #   We run siege -C first to make it display its message -- the next uses of siege
 #   will only return the json
 # - Erase Pacman cache
-RUN sudo pacman -Syu --noconfirm git sdl2 sdl2_image clang autoconf-archive cmake libev boost python-pre-commit \
+RUN sudo pacman -Syu --noconfirm git clang autoconf-archive cmake libev boost python-pre-commit \
                                  python-pytest python-pytest-xdist python-pytest-timeout \
                                  python-requests patch figlet siege gtest gmock mkcert caddy && \
     /scripts/setup-nobody.sh && \
