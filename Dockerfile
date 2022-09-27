@@ -12,7 +12,7 @@ COPY scripts /scripts
 #   will only return the json
 # - Erase Pacman cache
 # clang gcc gtest libev sdl2 sdl2_image
-RUN sudo pacman -Sy --noconfirm gcc \
+RUN sudo pacman -Sy --noconfirm gcc && \
   /scripts/setup-nobody.sh
 
 # RUN sudo pacman -Sy --noconfirm git clang autoconf-archive cmake libev boost python-pre-commit \
