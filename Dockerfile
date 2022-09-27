@@ -12,13 +12,11 @@ COPY scripts /scripts
 #   will only return the json
 # - Erase Pacman cache
 
-RUN cat /etc/pacman.conf
-
 COPY pacman.conf /etc/pacman.conf
 
 RUN cat /etc/pacman.conf
 
-RUN pacman -Sy archlinux-keyring --noconfirm
+# RUN pacman -Sy archlinux-keyring --noconfirm
 
 RUN sudo pacman -Syu --noconfirm git clang autoconf-archive cmake libev boost python-pre-commit \
                                  python-pytest python-pytest-xdist python-pytest-timeout \
