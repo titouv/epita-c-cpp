@@ -12,12 +12,11 @@ COPY scripts /scripts
 #   will only return the json
 # - Erase Pacman cache
 # clang gcc gtest libev sdl2 sdl2_image
-RUN sudo pacman -Sy git --noconfirm
-# noconfirm git clang autoconf-archive cmake libev boost python-pre-commit \
-#                                  python-pytest python-pytest-xdist python-pytest-timeout \
-#                                  python-requests patch figlet siege gtest gmock mkcert caddy
-RUN /scripts/setup-nobody.sh
-RUN /scripts/install-aur.sh libcsptr
-RUN /scripts/install-aur.sh criterion
-RUN siege -C
-RUN sudo pacman -Scc --noconfirm
+RUN sudo pacman -Sy --noconfirm git clang autoconf-archive cmake libev boost python-pre-commit \
+                                 python-pytest python-pytest-xdist python-pytest-timeout \
+                                 python-requests patch figlet siege gtest gmock mkcert caddy && \
+    /scripts/setup-nobody.sh && \
+    /scripts/install-aur.sh libcsptr && \
+    /scripts/install-aur.sh criterion && \
+    siege -C && \
+    sudo pacman -Scc --noconfirm
