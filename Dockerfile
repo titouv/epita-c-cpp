@@ -12,7 +12,7 @@ COPY scripts /scripts
 #   will only return the json
 # - Erase Pacman cache
 # clang gcc gtest libev sdl2 sdl2_image
-RUN sudo pacman git
+RUN sudo pacman -Sy git --noconfirm
 # noconfirm git clang autoconf-archive cmake libev boost python-pre-commit \
 #                                  python-pytest python-pytest-xdist python-pytest-timeout \
 #                                  python-requests patch figlet siege gtest gmock mkcert caddy
